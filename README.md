@@ -6,18 +6,17 @@ Configuration files for the [kubernetes-incubator nfs-client provisioner](https:
 PersistentVolumeClaims should use `storage-class: "managed-nfs-storage"` to utilize the provisioner like so:
 
 ```
-kind: PersistentVolumeClaim
 apiVersion: v1
+kind: PersistentVolumeClaim
 metadata:
   name: test-claim
-  annotations:
-    volume.beta.kubernetes.io/storage-class: "managed-nfs-storage"
 spec:
   accessModes:
     - ReadWriteMany
   resources:
     requests:
       storage: 1Mi
+  storageClassName: "managed-nfs-storage"
 ```
 
 Or alternatively, for a `volumeClaimTemplates`:
