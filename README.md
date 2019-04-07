@@ -20,4 +20,19 @@ spec:
       storage: 1Mi
 ```
 
+Or alternatively, for a `volumeClaimTemplates`:
+
+```
+volumeClaimTemplates:
+- metadata:
+    name: datadir
+  spec:
+    accessModes:
+      - ReadWriteMany
+    resources:
+      requests:
+        storage: 1Mi
+    storageClassName: "managed-nfs-storage"
+```
+
 All data for PVCs are stored in separate subdirectories under `/opt/homes/services/nfs-provisioner/` on the NFS host.
